@@ -122,5 +122,4 @@ public class RegistrationPage {
         resultComponent.tableResultsIsNotVisible();
         return this;
     }
-
 }
