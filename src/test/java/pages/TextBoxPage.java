@@ -10,17 +10,17 @@ import static com.codeborne.selenide.Selenide.open;
 public class TextBoxPage {
 
 
-    private SelenideElement userNameInput = $("[id=userName"),
+    private final SelenideElement userNameInput = $("[id=userName"),
             userEmailInput = $("#userEmail"),
             currentAddressInput = $("#currentAddress"),
             permanentAddressInput = $("#permanentAddress"),
             submitInput = $("#submit"),
             outputName = $("#output #name");
 
-    public TextBoxPage openPage() {
+    public TextBoxPage openPage()
+    {
         open("/text-box");
         return this;
-
     }
 
     public TextBoxPage setuserName(String value)
@@ -46,15 +46,16 @@ public class TextBoxPage {
         permanentAddressInput.setValue(value).scrollTo();
         return this;
     }
+
     public TextBoxPage clickSubmit()
     {
         submitInput.click();
         return this;
     }
 
-    public TextBoxPage checkResult(String value) {
+    public TextBoxPage checkResult(String value)
+    {
         outputName.$(byText(value));
-
         return this;
     }
 

@@ -2,21 +2,20 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.TestBase;
 
 public class StudentRegistrationFormPageObjectsTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void StudentRegistrationFormFullDate() {
+    void studentRegistrationFormFullDate() {
         registrationPage.openPage()
                 .setfirstName("Alex")
                 .setLastName("Arkhipov")
                 .setEmail("my@yandex.ru")
                 .setGender("Male")
                 .setNumber("1234567890")
-                .setdateOfBirth("day:22", "month:5", "year:2000")
+                .setDateOfBirth("2000", "May", "22")
                 .subjectsInput("a")
                 .hobbiesInput("Music")
                 .uploadPictureInput("img.png")
@@ -35,17 +34,18 @@ public class StudentRegistrationFormPageObjectsTest extends TestBase {
                 .tableResults("Picture", "img.png")
                 .tableResults("Address", "Moscow")
                 .tableResults("State and City", "Haryana Panipat");
+
     }
 
     @Test
-    void StudentRegistrationFormMinimumDate() {
+    void studentRegistrationFormMinimumDate() {
         registrationPage.openPage()
                 .setfirstName("Alex")
                 .setLastName("Arkhipov")
                 .setEmail("my@yandex.ru")
                 .setGender("Male")
                 .setNumber("1234567890")
-                .setdateOfBirth("day:22", "month:5", "year:2000")
+                .setDateOfBirth("2000", "May", "22")
                 .clickSubmit();
 
         registrationPage.tableResults("Student Name", "Alex Arkhipov")
@@ -56,14 +56,14 @@ public class StudentRegistrationFormPageObjectsTest extends TestBase {
     }
 
     @Test
-    void StudentRegistrationFormIncorrectEmail() {
+    void studentRegistrationFormIncorrectEmail() {
         registrationPage.openPage()
                 .setfirstName("Alex")
                 .setLastName("Arkhipov")
                 .setEmail("my@yandex.r")
                 .setGender("Male")
                 .setNumber("1234567890")
-                .setdateOfBirth("day:22", "month:5", "year:2000")
+                .setDateOfBirth("2000", "May", "22")
                 .clickSubmit();
 
         registrationPage.tableResultsIsNotVisible();

@@ -12,11 +12,11 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
     lastNameInput = $("#lastName"),
-    EmailInput = $("#userEmail"),
-    GenterInput = $("#genterWrapper"),
-    NumberInput = $("#userNumber"),
+    emailInput = $("#userEmail"),
+    genderInput = $("#genterWrapper"),
+    numberInput = $("#userNumber"),
     calendarInput = $("#dateOfBirthInput"),
     subjectsInput = $("#subjectsInput"),
     hobbiesInput = $("#hobbiesWrapper"),
@@ -46,24 +46,23 @@ public class RegistrationPage {
     }
     public RegistrationPage setEmail(String value)
     {
-        EmailInput.setValue(value);
+        emailInput.setValue(value);
         return this;
     }
     public RegistrationPage setGender(String value)
     {
-        GenterInput.$(byText(value)).click();
+        genderInput.$(byText(value)).click();
         return this;
     }
     public RegistrationPage setNumber(String value)
     {
-        NumberInput.setValue(value).scrollTo();
+        numberInput.setValue(value).scrollTo();
         return this;
     }
-    public RegistrationPage setdateOfBirth(String day, String month, String year)
+    public RegistrationPage setDateOfBirth(String year, String month, String day)
     {
-        new CalendarComponent().setDate(day,month,year);
         calendarInput.click();
-        calendarComponent.setDate(day, month, year);
+        calendarComponent.setDate(year, month, day);
         return this;
     }
 
